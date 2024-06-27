@@ -1,19 +1,17 @@
-import { RotatingLines } from "react-loader-spinner";
+import { Bars } from "react-loader-spinner";
 import css from "./Loader.module.css";
 
 const Loader: React.FC = () => {
   return (
     <div className={css.loaderContainer}>
-      <RotatingLines
-        visible={true}
-        height="96"
-        width="96"
-        color="grey"
-        strokeWidth="5"
-        animationDuration="0.75"
-        ariaLabel="rotating-lines-loading"
+      <Bars
+        height="80"
+        width="80"
+        color="#4fa94d"
+        ariaLabel="bars-loading"
         wrapperStyle={{}}
         wrapperClass=""
+        visible={true}
       />
     </div>
   );
