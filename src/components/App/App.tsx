@@ -15,16 +15,16 @@ interface SelectedImage {
 }
 
 function App() {
-  const [request, setRequest] = useState<string>(""); //поточний термін пошуку
-  const [page, setPage] = useState<number>(1); // поточна сторінка даних для завантаження наступної порції зображень
-  const [images, setImages] = useState<Images[]>([]); // масив зображень, які будуть відображені в галереї
-  const [isOpen, setIsOpen] = useState<boolean>(false); // стан для відстеження відкриття/закриття модального вікна зображення
+  const [request, setRequest] = useState<string>("");
+  const [page, setPage] = useState<number>(1);
+  const [images, setImages] = useState<Images[]>([]);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedImages, setSelectedImages] = useState<SelectedImage>({
     alt: "",
     url: "",
-  }); //URL та ALT вибраного зображення для відображення в модальному вікні
-  const [loading, setLoading] = useState<boolean>(false); // стан відстеження процесу завантаження даних
-  const [error, setError] = useState<boolean>(false); // стан відстеження помилки
+  });
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
 
   const handleSearch = async (value: string) => {
     try {
