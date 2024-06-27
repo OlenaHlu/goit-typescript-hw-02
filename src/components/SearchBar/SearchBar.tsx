@@ -1,14 +1,22 @@
 import toast from "react-hot-toast";
 import css from "./SearchBar.module.css";
+import { FormEvent } from "react";
 
-const SearchBar = ({ onSearch, setRequest }) => {
+interface SearchBarProps {
+  onSearch: (value: string) => void;
+  setRequest: (value: string) => void;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch, setRequest }) => {
   const notify = () => toast.error("Please, enter the keyword!");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const form = event.target;
-    const value = form.elements.searchBar.value.trim();
+    const form = event.target as HTMLFormElement;
+    const value = (
+      form.elements.namedItem("searchBar") as HTMLInputElement
+    ).value.trim();
     setRequest(value);
 
     if (value === "") {

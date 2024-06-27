@@ -4,23 +4,29 @@ import ImageModal from "../ImageModal/ImageModal";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import Loader from "../Loader/Loader";
-
 import { Toaster } from "react-hot-toast";
-
 import fetchImages from "../fetchImages/fetchImages";
-
 import { useState } from "react";
+import { Images } from "../fetchImages/fetchImages";
+
+interface SelectedImage {
+  alt: string;
+  url: string;
+}
 
 function App() {
-  const [request, setRequest] = useState(""); //поточний термін пошуку
-  const [page, setPage] = useState(1); // поточна сторінка даних для завантаження наступної порції зображень
-  const [images, setImages] = useState([]); // масив зображень, які будуть відображені в галереї
-  const [isOpen, setIsOpen] = useState(false); // стан для відстеження відкриття/закриття модального вікна зображення
-  const [selectedImages, setSelectedImages] = useState({ alt: "", url: "" }); //URL та ALT вибраного зображення для відображення в модальному вікні
-  const [loading, setLoading] = useState(false); // стан відстеження процесу завантаження даних
-  const [error, setError] = useState(false); // стан відстеження помилки
+  const [request, setRequest] = useState<string>(""); //поточний термін пошуку
+  const [page, setPage] = useState<number>(1); // поточна сторінка даних для завантаження наступної порції зображень
+  const [images, setImages] = useState<Images[]>([]); // масив зображень, які будуть відображені в галереї
+  const [isOpen, setIsOpen] = useState<boolean>(false); // стан для відстеження відкриття/закриття модального вікна зображення
+  const [selectedImages, setSelectedImages] = useState<SelectedImage>({
+    alt: "",
+    url: "",
+  }); //URL та ALT вибраного зображення для відображення в модальному вікні
+  const [loading, setLoading] = useState<boolean>(false); // стан відстеження процесу завантаження даних
+  const [error, setError] = useState<boolean>(false); // стан відстеження помилки
 
-  const handleSearch = async (value) => {
+  const handleSearch = async (value: string) => {
     try {
       setImages([]);
       setPage(1);
@@ -36,9 +42,9 @@ function App() {
     }
   };
 
-  function openModal(alt, url) {
+  function openModal(alt: string | null, url: string) {
     setIsOpen(true);
-    setSelectedImages({ alt, url });
+    setSelectedImages({ alt: alt || "", url });
   }
 
   function closeModal() {

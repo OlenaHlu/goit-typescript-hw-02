@@ -1,17 +1,33 @@
 import css from "./ImageCard.module.css";
 import { BiSolidLike } from "react-icons/bi";
 
-const ImageCard = ({ alt, urlSm, urlReg, likes, username, openModal }) => {
+interface ImageCardProps {
+  alt: string | null;
+  urlSm: string;
+  urlReg: string;
+  likes: number;
+  username: string;
+  openModal: (alt: string | null, url: string) => void;
+}
+
+const ImageCard: React.FC<ImageCardProps> = ({
+  alt,
+  urlSm,
+  urlReg,
+  likes,
+  username,
+  openModal,
+}) => {
   return (
     <>
       <div className={css.card}>
         <img
           className={css.cardImage}
-          onClick={() => openModal(alt, urlReg)}
+          onClick={() => openModal(alt || null, urlReg)}
           width="400"
           height="300"
           src={urlSm}
-          alt={alt}
+          alt={alt ?? "Image"}
         />
         <div className={css.imageInfo}>
           <p className={css.cardText}>{username}</p>

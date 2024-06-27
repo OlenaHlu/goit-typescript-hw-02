@@ -14,7 +14,20 @@ const customStyles = {
   },
 };
 
-const ImageModal = ({ isOpen, isClose, selectedImages }) => {
+interface ImageModalProps {
+  isOpen: boolean;
+  isClose: () => void;
+  selectedImages: {
+    url: string;
+    alt: string | null;
+  };
+}
+
+const ImageModal: React.FC<ImageModalProps> = ({
+  isOpen,
+  isClose,
+  selectedImages,
+}) => {
   return (
     <ReactModal
       isOpen={isOpen}
@@ -26,7 +39,7 @@ const ImageModal = ({ isOpen, isClose, selectedImages }) => {
       preventScroll={true}
       ariaHideApp={false}
     >
-      <img src={selectedImages.url} alt={selectedImages.alt} />
+      <img src={selectedImages.url} alt={selectedImages.alt ?? "Image"} />
     </ReactModal>
   );
 };

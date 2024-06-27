@@ -1,7 +1,11 @@
 import { RotatingLines } from "react-loader-spinner";
 import css from "./Loader.module.css";
 
-const Loader = (isVisible) => {
+interface LoaderProp {
+  isVisible: boolean;
+}
+
+const Loader: React.FC<LoaderProp> = (isVisible) => {
   return (
     <div className={css.loaderContainer}>
       <RotatingLines
