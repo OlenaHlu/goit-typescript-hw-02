@@ -1,0 +1,30 @@
+.card {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: 1px solid rgb(148, 215, 216);
+  border-radius: 4px;
+}
+
+.cardImage {
+  cursor: pointer;
+  display: block;
+  object-fit: cover;
+}
+
+.imageInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 20px;
+  background-color: #121c1b;
+}
+
+.cardText {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: rgb(148, 215, 216);
+}
+
+.icon {
+  margin-right: 4px;
+}
