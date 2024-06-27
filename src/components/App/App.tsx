@@ -75,7 +75,7 @@ function App() {
       ) : (
         <ImageGallery images={images} openModal={openModal} />
       )}
-      {loading && <Loader isVisible={loading} />}
+      {loading && <Loader />}
       <ImageModal
         isOpen={isOpen}
         isClose={closeModal}
